@@ -1,0 +1,95 @@
+<!DOCTYPE  html>
+<html>
+<head>
+  <title>planets</title>
+  <style>
+    .text
+    {
+      margin-top: 40%;
+    }
+    .face
+    {
+      position: fixed;
+      top:300px;
+      left:300px;
+      width: 100px;
+      height:100px;
+      background-color: blue;
+      border: 1px solid black;
+      border-radius:100%;
+      background-size: contain;
+      transform-origin: 50px 50px -150px;
+      backface-visibility: hidden;
+      text-align: center;
+    }
+
+    #f2{
+      -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      -webkit-animation: anim_face1 10s linear infinite;
+      background-color: rgb(100,200,100);
+    }
+    #f3{
+      -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      -webkit-animation: anim_face1 4s linear infinite;
+    }
+    @-webkit-keyframes anim_face1  {
+      0%{
+        -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+      }
+      100%{
+        -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(360deg);
+      }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="face"  style="background-color:red"><div class ="text"><h1>sun</h1></div></div>
+    <div class="face" id="f2" style="left:50px; transform-origin:300px 50px 0px"><div class ="text"><h1>mars</h1></div></div>
+    <div class="face" id="f3" style="left:175px; transform-origin:175px 50px 0px"><div class ="text"><h1>ear</h1></div></div>
+    <h5>play</h5>
+    <button onclick="playear()">ear</button>
+    <button onclick="playmars()">mars</button>
+    <h5>pause</h5>
+    <button onclick="pauseear()">ear</button>
+    <button onclick="pausemars()">mars</button>
+    <h5>reset</h5>
+    <button onclick="resetear()">ear</button>
+    <button onclick="resetmars()">mars</button>
+    <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script>
+    function resetmars(){
+      var elm=document.getElementById("f2");
+      var newone=elm.cloneNode(true);
+      elm.parentNode.replaceChild(newone,elm);
+      document.getElementById("f2").style.WebkitAnimationPlayState ="paused";
+    }
+    function resetear()
+    {
+      var elm=document.getElementById("f3");
+      var newone=elm.cloneNode(true);
+      elm.parentNode.replaceChild(newone,elm);
+      document.getElementById("f3").style.WebkitAnimationPlayState ="paused";
+    }
+
+    function playear()
+    {
+        document.getElementById("f3").style.WebkitAnimationPlayState = "running";
+
+    }
+    function playmars()
+    {
+        document.getElementById("f2").style.WebkitAnimationPlayState = "running";
+
+    }
+
+    function pauseear()
+    {
+      document.getElementById("f3").style.WebkitAnimationPlayState ="paused";
+    }
+    function pausemars()
+    {
+      document.getElementById("f2").style.WebkitAnimationPlayState ="paused";
+    }
+</script>
+  </body>
+  </html>
