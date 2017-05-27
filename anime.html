@@ -1,8 +1,35 @@
 <!DOCTYPE  html>
 <html>
 <head>
-  <title>planets</title>
+  <title>rotation</title>
   <style>
+  *{
+    padding: 0px;
+    margin: 0px;
+  }
+  html{
+    background: url(http://wallpapercave.com/wp/rXfXget.jpg) no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     background-size: cover;
+  }
+  ul{
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+        height: 30px;
+        background-color: rgb(100, 100, 100);
+  }
+  li{
+    float: left;
+    display: block;
+    padding: 4px 20px;
+    border-right: 2px solid black;
+      }
+      li:last-child {
+        border-right: none;
+      }
     .text
     {
       margin-top: 40%;
@@ -42,52 +69,43 @@
     }
     </style>
   </head>
-  <body>
-    <div class="face"  style="background-color:red"><div class ="text"><h1>sun</h1></div></div>
+  <body  >
+    <div class="face"  style="background-color:red"><div class="text"><h1>sun</h1></div></div>
     <div class="face" id="f2" style="left:50px; transform-origin:300px 50px 0px"><div class ="text"><h1>mars</h1></div></div>
     <div class="face" id="f3" style="left:175px; transform-origin:175px 50px 0px"><div class ="text"><h1>ear</h1></div></div>
-    <h5>play</h5>
-    <button onclick="playear()">ear</button>
-    <button onclick="playmars()">mars</button>
-    <h5>pause</h5>
-    <button onclick="pauseear()">ear</button>
-    <button onclick="pausemars()">mars</button>
-    <h5>reset</h5>
-    <button onclick="resetear()">ear</button>
-    <button onclick="resetmars()">mars</button>
+<ul type="none" >
+  <li>
+    <div onclick="play()" style="cursor : pointer;"><p>play</p></div>
+    </li>
+  <li>
+    <div onclick="pause()" style="cursor : pointer;"><p>pause</p></div>
+    </li>
+<li>
+    <div onclick="reset()" style="cursor : pointer;"><p>reset</p></div>
+
+  </li>
+</ul>
     <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
 <script>
-    function resetmars(){
+    function reset(){
       var elm=document.getElementById("f2");
       var newone=elm.cloneNode(true);
       elm.parentNode.replaceChild(newone,elm);
-      document.getElementById("f2").style.WebkitAnimationPlayState ="paused";
-    }
-    function resetear()
-    {
-      var elm=document.getElementById("f3");
-      var newone=elm.cloneNode(true);
-      elm.parentNode.replaceChild(newone,elm);
-      document.getElementById("f3").style.WebkitAnimationPlayState ="paused";
-    }
 
-    function playear()
+      var elm1=document.getElementById("f3");
+      var newone1=elm1.cloneNode(true);
+      elm1.parentNode.replaceChild(newone1,elm1);
+          }
+
+    function play()
     {
         document.getElementById("f3").style.WebkitAnimationPlayState = "running";
-
-    }
-    function playmars()
-    {
         document.getElementById("f2").style.WebkitAnimationPlayState = "running";
-
     }
 
-    function pauseear()
+    function pause()
     {
       document.getElementById("f3").style.WebkitAnimationPlayState ="paused";
-    }
-    function pausemars()
-    {
       document.getElementById("f2").style.WebkitAnimationPlayState ="paused";
     }
 </script>
