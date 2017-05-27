@@ -6,21 +6,82 @@
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+  function validate()
+  {
+    if( myname())
+    {
+      if(mypass())
+      {
+        return true;
+      }
+    }
+    return false;
+  }
+  function myname()
+  {
+    var fn=document.myform.fname;
+    var ln=document.myform.lname;
+    var alpha=/^[A-Za-z]+$/;
+    if(fn.value.match(alpha) && ln.value.match(alpha))
+    {
+      return true;
+    }
+    else {
+      document.getElementById("nmerr").innerHTML="Name Invalid";
+      fn.focus();
+      ln.focus();
+      return false;
+    }
+  }
+  function mypass()
+  {
+    var pas=document.myform.pass.value;
+    var pas2=document.myform.pass2.value;
+    if(pas.length>=8)
+    {
+      document.getElementById("passerr").innerHTML="";
+      if(pas==pas2)
+      {
+            document.getElementById("matcherr").innerHTML="";
+            return true;
+      }
+      else
+      {
+      document.getElementById("matcherr").innerHTML="password does not match";
+      return false;
+      }
+          }
+    else
+    {
+      document.getElementById("passerr").innerHTML="invalid password";
+      return false;
+    }
+  }
+
+  </script>
+  <style >
+    small{
+      color: red;
+
+    }
+  </style>
 </head>
 <body>
   <div class="container" >
-<form style="width: 40%; margin: auto">
+<form style="width: 40%; margin: auto;"  name="myform" onsubmit="return validate();" >
     <h1>Saarang 2018 Sign IN</h1>
     <div class="form-group">
-    <div class="row">
+
       <label for="Name" style="display: block;">Name</label>
       <div class="col-lg-6 col-sm-6 col-xs-6">
-      <input style="display: inline;"type="text" class="form-control" id="exampleName" placeholder="First Name" name="exampleName" required>
+      <input style="display: inline;" type="text" class="form-control" name="fname" placeholder="First Name"  required>
     </div>
     <div class="col-lg-6 col-sm-6 col-xs-6">
-      <input style="display: inline;" type="text" class="form-control" id="exampleName" placeholder="Last Name" name="exampleName" required>
+      <input style="display: inline;" type="text" class="form-control" name="lname" placeholder="Last Name"  required>
     </div>
-    </div>
+    
+    <small id="nmerr"></small>
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
@@ -28,9 +89,15 @@
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+    <label for="exampleInputPassword1">Password<small style="color:blue;">(should be more than equal to 8 chars)</small></label>
+    <input type="password" class="form-control" name="pass" placeholder="Password" required>
+    <small id="passerr"></small>
   </div>
+    <div class="form-group">
+    <!--<label for="exampleInputPassword1">Password<small style="color:blue;">(should be more than equal to 8 chars)</small></label>-->
+    <input type="password" class="form-control" name="pass2" placeholder="confirm Password" required>
+    <small id="matcherr"></small>
+      </div>
   <div class="form-group">
     <label for="exampleSelect1">Choose Event</label>
     <select class="form-control" id="exampleSelect1">
@@ -41,17 +108,14 @@
       <option>acoustyx</option>
     </select>
   </div>
-  <div class="form-check">
+    <div class="form-check">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" required>
-      I'm not a robot
-    </label>
+          </label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  </div>
-  <script>
-  <p>$("#exampleName").append</p>;
-  </script>
-  </body>
-  </html>
+<input type="submit"  style="color : blue;" value="submit"/>
+</form>
+
+</div>
+
+</body>
+</html>
